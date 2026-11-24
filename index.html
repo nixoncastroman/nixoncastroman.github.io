@@ -17,7 +17,7 @@
 <link rel="preload" href="assets/fonts/EBGaramond-VariableFont.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body>
+<body class="home">
 <a class="skip" href="#work">Skip to work</a>
 
 <main>
@@ -43,52 +43,62 @@
     <a class="cue" href="#work">Selected work ↓</a>
   </section>
 
-  <section id="work" class="work wrap" aria-labelledby="work-title">
+  <section id="work" class="work" aria-labelledby="work-title">
     <h2 id="work-title" class="section-title">Selected work</h2>
-    <ol class="work-list">
-      <li class="work-item">
-        <a class="work-link" href="work/pd-refactor.html">
-          <span class="work-row"><span class="work-num">01</span><span class="work-title">Forward-Looking PD Refactor</span><span class="work-leader" aria-hidden="true"></span><span class="work-meta">NTT DATA · 2026</span></span>
-          <span class="work-desc">Made a bank credit-risk pipeline 5.7× faster and 17× lighter on memory, with the same results.</span>
+    <ul class="deck">
+      <li>
+        <a class="mini" href="work/pd-refactor.html">
+          <span class="mini-top"><span class="ctx">NTT DATA</span><span>2026</span></span>
+          <span class="mini-center">
+            <span class="mini-title">Forward-Looking PD Refactor</span>
+            <span class="mini-desc">A bank credit-risk pipeline: 5.7× faster, 17× less memory, same results.</span>
+          </span>
+          <span class="mini-bottom">Python · Kafka · statsmodels</span>
         </a>
       </li>
-      <li class="work-item">
-        <a class="work-link" href="work/leak-phishing-monitor.html">
-          <span class="work-row"><span class="work-num">02</span><span class="work-title">Leak &amp; Phishing Early Detection</span><span class="work-leader" aria-hidden="true"></span><span class="work-meta">Capstone, Bank Jatim · 2026</span></span>
-          <span class="work-desc">Watches public sites and the dark web for leaked bank data and fake bank sites. I lead the team.</span>
+      <li>
+        <a class="mini" href="work/leak-phishing-monitor.html">
+          <span class="mini-top"><span class="ctx">Capstone · Bank Jatim</span><span>2026</span></span>
+          <span class="mini-center">
+            <span class="mini-title">Leak &amp; Phishing Early Detection</span>
+            <span class="mini-desc">Watches public sites and the dark web for leaked bank data and fake bank sites.</span>
+          </span>
+          <span class="mini-bottom">FastAPI · PostgreSQL · React</span>
         </a>
       </li>
-      <li class="work-item">
-        <a class="work-link" href="work/classify-detoxify.html">
-          <span class="work-row"><span class="work-num">03</span><span class="work-title">Classify &amp; Detoxify</span><span class="work-leader" aria-hidden="true"></span><span class="work-meta">NLP · 2025</span></span>
-          <span class="work-desc">Rewrites toxic comments into polite ones instead of deleting them. RoBERTa plus a fine-tuned LLaMA 3.1 8B.</span>
+      <li>
+        <a class="mini" href="work/classify-detoxify.html">
+          <span class="mini-top"><span class="ctx">NLP project</span><span>2025</span></span>
+          <span class="mini-center">
+            <span class="mini-title">Classify &amp; Detoxify</span>
+            <span class="mini-desc">Rewrites toxic comments into polite ones instead of deleting them.</span>
+          </span>
+          <span class="mini-bottom">RoBERTa · LLaMA 3.1 8B · QLoRA</span>
         </a>
       </li>
-      <li class="work-item">
-        <a class="work-link" href="work/spec-generator.html">
-          <span class="work-row"><span class="work-num">04</span><span class="work-title">Spec Generator</span><span class="work-leader" aria-hidden="true"></span><span class="work-meta">Fata Organa · 2025</span></span>
-          <span class="work-desc">Writes a 29-page technical spec from a short brief, using local LLMs.</span>
+      <li>
+        <a class="mini" href="work/spec-generator.html">
+          <span class="mini-top"><span class="ctx">Fata Organa</span><span>2025</span></span>
+          <span class="mini-center">
+            <span class="mini-title">Spec Generator</span>
+            <span class="mini-desc">Writes a 29-page technical spec from a short brief, on local LLMs.</span>
+          </span>
+          <span class="mini-bottom">FastAPI · LangChain · Ollama</span>
         </a>
       </li>
-    </ol>
+    </ul>
   </section>
 
-  <section class="about wrap" aria-labelledby="about-title">
-    <h2 id="about-title" class="section-title">About</h2>
-    <p>Final-year Informatics Engineering student at ITS in Surabaya, graduating in 2027. I’m a Machine Learning Engineer intern at NTT DATA. Before that I was an AI Engineer intern at Fata Organa, and a teaching assistant for Machine Learning, Computer Networks and Operating Systems.</p>
-    <p>I speak Indonesian, English and conversational Mandarin.</p>
-    <p><strong>Looking for ML, AI and data science internships and new-grad roles, anywhere.</strong> Email works best.</p>
+  <section class="about" aria-label="About">
+    <p>Final-year Informatics Engineering at ITS, graduating in 2027.</p>
+    <p>Looking for ML, AI and data science internships and new-grad roles, anywhere.</p>
+    <p class="links"><a href="mailto:nixoncastroman08@gmail.com">Email</a><a href="https://www.linkedin.com/in/nixoncastroman">LinkedIn</a><a href="resume.pdf">Résumé</a></p>
   </section>
 </main>
 
 <footer class="site-footer">
   <div class="wrap">
     <span>© 2026 Nixon Castroman</span>
-    <nav aria-label="Contact">
-      <a href="mailto:nixoncastroman08@gmail.com">Email</a>
-      <a href="https://www.linkedin.com/in/nixoncastroman">LinkedIn</a>
-      <a href="resume.pdf">Résumé</a>
-    </nav>
   </div>
 </footer>
 </body>

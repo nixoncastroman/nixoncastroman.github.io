@@ -27,6 +27,8 @@
   --serif: "EB Garamond", Garamond, "Times New Roman", serif;
   --measure: 40rem;
   --page: min(860px, 92vw);
+  /* landing card: up to 1180px, 90vw on phones, and short enough to fit the window */
+  --card-w: min(1180px, 90vw, max(620px, calc((100svh - 190px) * 1.75)));
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -81,6 +83,7 @@ a:hover { text-decoration-color: var(--ink); }
   container-type: inline-size;
   position: relative;
   width: var(--page);
+  width: var(--card-w);
   aspect-ratio: 7 / 4;               /* a 3.5 x 2 in business card */
   background: var(--card);
   border: 1px solid rgba(29, 27, 24, .07);
@@ -89,7 +92,7 @@ a:hover { text-decoration-color: var(--ink); }
     0 3px 8px rgba(29, 27, 24, .05),
     0 26px 60px -20px rgba(60, 45, 20, .30);
   padding: 44px 48px 40px;
-  padding: 5cqi 5.6cqi 4.6cqi;
+  padding: calc(var(--card-w) * .05) calc(var(--card-w) * .056) calc(var(--card-w) * .046);
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
@@ -113,8 +116,8 @@ a:hover { text-decoration-color: var(--ink); }
   justify-content: space-between;
   align-items: flex-start;
   gap: 2rem;
-  font-size: 16px;
-  font-size: 1.95cqi;
+  font-size: 17px;
+  font-size: 2.1cqi;
   line-height: 1.35;
 }
 .card-org { text-align: right; }
@@ -125,8 +128,8 @@ a:hover { text-decoration-color: var(--ink); }
 .card-name {
   margin: 0;
   font-weight: 400;
-  font-size: 40px;
-  font-size: 4.7cqi;
+  font-size: 44px;
+  font-size: 5.2cqi;
   line-height: 1.1;
   letter-spacing: .04em;
 }
@@ -136,15 +139,15 @@ a:hover { text-decoration-color: var(--ink); }
   margin-top: .3em !important;
   font-variant-caps: small-caps;
   letter-spacing: .07em;
-  font-size: 20px;
-  font-size: 2.35cqi;
+  font-size: 21px;
+  font-size: 2.55cqi;
 }
-.card-email { margin-top: .9em !important; font-size: 16px; font-size: 1.95cqi; font-variant-numeric: lining-nums; }
+.card-email { margin-top: .9em !important; font-size: 17px; font-size: 2.1cqi; font-variant-numeric: lining-nums; }
 
 .card-bottom {
   text-align: center;
-  font-size: 15px;
-  font-size: 1.75cqi;
+  font-size: 16px;
+  font-size: 1.95cqi;
   letter-spacing: .01em;
 }
 .card-bottom .sep { padding: 0 .5em; color: var(--ink-3); }
@@ -187,49 +190,49 @@ a:hover { text-decoration-color: var(--ink); }
   letter-spacing: .09em;
 }
 
-.work { padding: 3rem 0 1rem; }
-.work-list { list-style: none; margin: 0; padding: 0; }
-.work-item { border-bottom: 1px solid var(--rule); }
-.work-link {
-  display: block;
-  padding: 1.05rem 0 1.2rem;
+/* Selected work: a small deck of cards on the same stock, laid out like the main card */
+.work { width: var(--card-w); margin: 0 auto; padding: 1.5rem 0 0; }
+.home .section-title { text-align: center; border: 0; padding: 0; margin: 0 0 2rem; color: var(--ink-2); }
+.deck { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 2.2rem; }
+.mini {
+  container-type: inline-size;
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  aspect-ratio: 7 / 4;
+  padding: 5.4% 6.2% 4.8%;
+  background: var(--card);
+  border: 1px solid rgba(29, 27, 24, .08);
+  box-shadow: 0 1px 1px rgba(29, 27, 24, .04), 0 14px 32px -18px rgba(60, 45, 20, .32);
+  color: var(--ink);
   text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease;
 }
-.work-row { display: flex; align-items: baseline; gap: .9rem; }
-.work-num {
-  min-width: 1.7rem;
-  color: var(--ink-2);
-  font-size: .95rem;
-  font-variant-numeric: lining-nums tabular-nums;
+.mini:hover, .mini:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 1px 1px rgba(29, 27, 24, .05), 0 22px 42px -20px rgba(60, 45, 20, .40);
 }
-.work-title {
-  font-size: 1.45rem;
-  line-height: 1.25;
-  font-variant-caps: small-caps;
-  letter-spacing: .03em;
+@media (prefers-reduced-motion: reduce) {
+  .mini { transition: none; }
+  .mini:hover, .mini:focus-visible { transform: none; }
 }
-.work-leader {
-  flex: 1;
-  min-width: 1.5rem;
-  border-bottom: 1px dotted var(--ink-3);
-  transform: translateY(-.3em);
-}
-.work-meta { color: var(--ink-2); font-style: italic; white-space: nowrap; }
-.work-desc { display: block; margin: .3rem 0 0 2.6rem; max-width: 38rem; color: var(--ink-2); }
-.work-link:hover .work-title,
-.work-link:focus-visible .work-title {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: .18em;
-}
-@media (max-width: 600px) {
-  .work-row { flex-wrap: wrap; row-gap: 0; }
-  .work-leader { display: none; }
-  .work-meta { width: 100%; padding-left: 2.6rem; }
-}
+.mini-top { display: flex; justify-content: space-between; gap: 1rem; font-size: clamp(13.5px, 3cqi, 18px); color: var(--ink-2); }
+.mini-top .ctx { font-variant-caps: small-caps; letter-spacing: .05em; }
+.mini-center { align-self: center; text-align: center; }
+.mini-title { display: block; font-size: clamp(22px, 5.7cqi, 34px); line-height: 1.15; font-variant-caps: small-caps; letter-spacing: .03em; }
+.mini-desc { display: block; margin: .55em auto 0; max-width: 92%; font-size: clamp(15px, 3.35cqi, 20px); line-height: 1.4; color: var(--ink-2); }
+.mini-bottom { text-align: center; font-size: clamp(13px, 2.75cqi, 16px); font-variant-caps: all-small-caps; letter-spacing: .09em; color: var(--ink-2); }
+@media (max-width: 760px) { .deck { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .mini { aspect-ratio: auto; min-height: 15rem; padding: 22px 20px 20px; } }
 
-.about { padding: 2.6rem 0 1rem; }
-.about p { max-width: var(--measure); margin: .9rem 0 0; }
+/* About: two quiet lines and three links, centred like the card */
+.about { width: var(--card-w); margin: 0 auto; padding: 5rem 0 0; text-align: center; }
+.about p { margin: 0 auto .45rem; max-width: 38rem; font-size: 1.15rem; line-height: 1.6; color: var(--ink-2); }
+.about .links { margin-top: 1.3rem; font-variant-caps: all-small-caps; letter-spacing: .1em; font-size: 1.1rem; }
+.about .links a { margin: 0 .6rem; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+.about .links a:hover { border-bottom-color: var(--ink); }
+.home .site-footer { padding: 4rem 0 3rem; }
+.home .site-footer .wrap { width: var(--card-w); justify-content: center; border-top: 0; padding-top: 0; }
 
 .site-footer { padding: 3rem 0 3.5rem; color: var(--ink-2); font-size: 1rem; }
 .site-footer .wrap {
