@@ -27,8 +27,8 @@
   --serif: "EB Garamond", Garamond, "Times New Roman", serif;
   --measure: 40rem;
   --page: min(860px, 92vw);
-  /* landing card: up to 1180px, 90vw on phones, and short enough to fit the window */
-  --card-w: min(1180px, 90vw, max(620px, calc((100svh - 190px) * 1.75)));
+  /* landing card: up to 980px, 90vw on phones, and short enough to fit the window */
+  --card-w: min(980px, 90vw, max(620px, calc((100svh - 190px) * 1.75)));
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -117,7 +117,7 @@ a:hover { text-decoration-color: var(--ink); }
   align-items: flex-start;
   gap: 2rem;
   font-size: 17px;
-  font-size: 2.1cqi;
+  font-size: 2cqi;
   line-height: 1.35;
 }
 .card-org { text-align: right; }
@@ -129,7 +129,7 @@ a:hover { text-decoration-color: var(--ink); }
   margin: 0;
   font-weight: 400;
   font-size: 44px;
-  font-size: 5.2cqi;
+  font-size: 4.9cqi;
   line-height: 1.1;
   letter-spacing: .04em;
 }
@@ -140,14 +140,14 @@ a:hover { text-decoration-color: var(--ink); }
   font-variant-caps: small-caps;
   letter-spacing: .07em;
   font-size: 21px;
-  font-size: 2.55cqi;
+  font-size: 2.45cqi;
 }
-.card-email { margin-top: .9em !important; font-size: 17px; font-size: 2.1cqi; font-variant-numeric: lining-nums; }
+.card-email { margin-top: .9em !important; font-size: 17px; font-size: 2cqi; font-variant-numeric: lining-nums; }
 
 .card-bottom {
   text-align: center;
   font-size: 16px;
-  font-size: 1.95cqi;
+  font-size: 1.85cqi;
   letter-spacing: .01em;
 }
 .card-bottom .sep { padding: 0 .5em; color: var(--ink-3); }
