@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leak &amp; Phishing Early Detection · Nixon Castroman</title>
+<meta name="description" content="A monitor that searches public sites and the dark web for leaked Bank Jatim data and fake Bank Jatim sites. ITS capstone, led by Nixon Castroman.">
+<link rel="canonical" href="https://nixoncastroman.github.io/work/leak-phishing-monitor.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leak &amp; Phishing Early Detection · Nixon Castroman">
+<meta property="og:description" content="Searches public sites and the dark web for leaked bank data and fake bank sites.">
+<meta property="og:image" content="https://nixoncastroman.github.io/assets/img/og.png">
+<meta name="theme-color" content="#ece7dc">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="home" href="../index.html">Nixon Castroman</a>
+  <nav aria-label="Site"><a href="../index.html#work">Work</a><a href="../resume.pdf">Résumé</a><a href="mailto:nixoncastroman08@gmail.com">Contact</a></nav>
+</header>
+
+<main id="main" class="sheet prose">
+  <p class="eyebrow">Case study 02 · Capstone with Bank Jatim</p>
+  <h1>Leak &amp; Phishing Early Detection</h1>
+  <p class="lede">A monitor that searches public sites and the dark web for leaked Bank Jatim data and fake Bank Jatim sites, so the security team doesn’t have to do it by hand.</p>
+
+  <dl class="facts">
+    <dt>Role</dt><dd>Team lead and project manager, team of 5</dd>
+    <dt>Client</dt><dd>Bank Jatim, CISO division</dd>
+    <dt>When</dt><dd>Sep – Dec 2026 (ongoing)</dd>
+    <dt>Stack</dt><dd>FastAPI, PostgreSQL, React, Docker</dd>
+  </dl>
+
+  <div class="stats">
+    <p class="stat"><span class="stat-value">8</span><span class="stat-label">sources, checked every 6 hours</span></p>
+    <p class="stat"><span class="stat-value">233</span><span class="stat-label">items found so far</span></p>
+    <p class="stat"><span class="stat-value">~15%</span><span class="stat-label">false positives (target: under 20%)</span></p>
+  </div>
+
+  <figure>
+    <ol class="flow" aria-label="How a finding moves through the system">
+      <li><span class="box">Bank’s domain<small>the only input</small></span></li>
+      <li><span class="box">Subdomains<small>from public records</small></span></li>
+      <li><span class="box">Inventory<small>official or not</small></span></li>
+      <li><span class="box">8 sources<small>every 6 hours</small></span></li>
+      <li><span class="box">Label + evidence<small>per finding</small></span></li>
+      <li><span class="box">Dashboard<small>analysts decide</small></span></li>
+    </ol>
+  </figure>
+
+  <h2>How it works</h2>
+  <ul>
+    <li>Finds the bank’s subdomains from public records (certificate logs, HackerTarget, the Wayback Machine) to know what’s official.</li>
+    <li>Every 6 hours, searches 8 sources for the bank’s name: search engines, social media, paste sites, forums, certificate logs, phishing feeds, urlscan.io and the Tor index.</li>
+    <li>Labels each finding, for example a fake site, leaked data or brand abuse, and saves the source link and a hash as evidence. Look-alike domains are caught with typosquat, homoglyph and IDN checks.</li>
+    <li>Analysts review findings in a dashboard. A later scan never overwrites their decision.</li>
+  </ul>
+  <p>It only looks at public sources. It never scans the bank’s systems or touches customer data.</p>
+
+  <h2>My part</h2>
+  <p>I lead the team and run the project with the bank’s CISO division: requirements, sprint planning and reviews. I also worked on the dashboard’s review flow, and switched the output from High/Medium/Low risk scores to labels with evidence, so analysts can see why something was flagged.</p>
+
+  <h2>Accuracy</h2>
+  <p>We checked 100 of the 233 findings by hand. The system got 15 wrong, a false-positive rate of about 15%. The bank’s target is under 20%.</p>
+
+  <p class="note">The project ends in December 2026. Real findings stay with the bank.</p>
+
+  <nav class="next" aria-label="More work">
+    <a href="pd-refactor.html"><span class="label">Previous</span><span>← Forward-Looking PD Refactor</span></a>
+    <a href="classify-detoxify.html"><span class="label">Next</span><span>Classify &amp; Detoxify →</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Nixon Castroman</span>
+    <nav aria-label="Contact">
+      <a href="mailto:nixoncastroman08@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/nixoncastroman">LinkedIn</a>
+      <a href="../resume.pdf">Résumé</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Classify &amp; Detoxify · Nixon Castroman</title>
+<meta name="description" content="A chat filter that rewrites toxic comments into polite ones with the same meaning. RoBERTa classifier plus a QLoRA fine-tuned LLaMA 3.1 8B.">
+<link rel="canonical" href="https://nixoncastroman.github.io/work/classify-detoxify.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Classify &amp; Detoxify · Nixon Castroman">
+<meta property="og:description" content="Rewrites toxic comments into polite ones instead of deleting them.">
+<meta property="og:image" content="https://nixoncastroman.github.io/assets/img/og.png">
+<meta name="theme-color" content="#ece7dc">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="home" href="../index.html">Nixon Castroman</a>
+  <nav aria-label="Site"><a href="../index.html#work">Work</a><a href="../resume.pdf">Résumé</a><a href="mailto:nixoncastroman08@gmail.com">Contact</a></nav>
+</header>
+
+<main id="main" class="sheet prose">
+  <p class="eyebrow">Case study 03 · NLP project</p>
+  <h1>Classify &amp; Detoxify</h1>
+  <p class="lede">A chat filter that rewrites toxic comments into polite ones with the same meaning, instead of just deleting them.</p>
+
+  <dl class="facts">
+    <dt>Role</dt><dd>Machine learning, team of 2</dd>
+    <dt>When</dt><dd>Apr 2025</dd>
+    <dt>Stack</dt><dd>RoBERTa, LLaMA 3.1 8B, QLoRA (Unsloth), Hugging Face, Gradio</dd>
+    <dt>Write-up</dt><dd><a href="https://medium.com/@nixoncastroman08/classify-and-detoxify-tackling-toxic-comments-with-roberta-and-llama-99754e127d94">Medium</a></dd>
+  </dl>
+
+  <div class="stats">
+    <p class="stat"><span class="stat-value">94.5%</span><span class="stat-label">accuracy on held-out data</span></p>
+    <p class="stat"><span class="stat-value">0.945</span><span class="stat-label">weighted F1</span></p>
+    <p class="stat"><span class="stat-value">8B</span><span class="stat-label">parameter model, fine-tuned on one GPU</span></p>
+  </div>
+
+  <figure>
+    <img class="shot" src="../assets/img/detox-chatroom.png" width="933" height="523" alt="Chat room demo: after a user types “nahh, you’re stupid”, the system shows “Detected (Insult) chat” and the rewrite “I’m questioning your intelligence”.">
+    <figcaption>The demo chat room. “nahh, you’re stupid” gets flagged as an insult and rewritten as “I’m questioning your intelligence.”</figcaption>
+  </figure>
+
+  <h2>What I did</h2>
+  <ul>
+    <li>Fine-tuned RoBERTa to label comments as insult, threat, sexual harassment or non-toxic. It reached 94.5% accuracy on a held-out 20% of the data.</li>
+    <li>Fine-tuned LLaMA 3.1 8B to rewrite the toxic ones politely. QLoRA (4-bit weights plus small adapters, through Unsloth) made it fit on a single GPU.</li>
+    <li>Evaluated the rewrites with ROUGE-L and by reading them. People preferred ours over baselines that scored higher on ROUGE.</li>
+    <li>Built a multi-user chat room in Gradio as the demo.</li>
+  </ul>
+
+  <nav class="next" aria-label="More work">
+    <a href="leak-phishing-monitor.html"><span class="label">Previous</span><span>← Leak &amp; Phishing Early Detection</span></a>
+    <a href="spec-generator.html"><span class="label">Next</span><span>Spec Generator →</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Nixon Castroman</span>
+    <nav aria-label="Contact">
+      <a href="mailto:nixoncastroman08@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/nixoncastroman">LinkedIn</a>
+      <a href="../resume.pdf">Résumé</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

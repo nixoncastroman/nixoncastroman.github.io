@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forward-Looking PD Refactor · Nixon Castroman</title>
+<meta name="description" content="Rewrote the slowest part of a bank credit-risk pipeline at NTT DATA: 5.7× faster, 17× less memory, same results.">
+<link rel="canonical" href="https://nixoncastroman.github.io/work/pd-refactor.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Forward-Looking PD Refactor · Nixon Castroman">
+<meta property="og:description" content="A bank credit-risk pipeline, 5.7× faster and 17× lighter on memory, with the same results.">
+<meta property="og:image" content="https://nixoncastroman.github.io/assets/img/og.png">
+<meta name="theme-color" content="#ece7dc">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/charts.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="home" href="../index.html">Nixon Castroman</a>
+  <nav aria-label="Site"><a href="../index.html#work">Work</a><a href="../resume.pdf">Résumé</a><a href="mailto:nixoncastroman08@gmail.com">Contact</a></nav>
+</header>
+
+<main id="main" class="sheet prose">
+  <p class="eyebrow">Case study 01 · NTT DATA</p>
+  <h1>Forward-Looking PD Refactor</h1>
+  <p class="lede">I rewrote the slowest part of a credit-risk pipeline that NTT DATA sells to Indonesian banks. Same results, 5.7× faster, and it no longer runs out of memory.</p>
+
+  <dl class="facts">
+    <dt>Role</dt><dd>Machine Learning Engineer Intern</dd>
+    <dt>Where</dt><dd>NTT DATA, Jakarta</dd>
+    <dt>When</dt><dd>Jan 2026 – Jan 2027</dd>
+    <dt>Stack</dt><dd>Python, Kafka, Oracle, PostgreSQL, statsmodels</dd>
+  </dl>
+
+  <div class="stats">
+    <p class="stat"><span class="stat-value">5.7×</span><span class="stat-label">faster: 91 min → 16 min</span></p>
+    <p class="stat"><span class="stat-value">17×</span><span class="stat-label">less memory: 8.7 GB → 0.5 GB</span></p>
+    <p class="stat"><span class="stat-value">7+</span><span class="stat-label">decimal places matching the old code</span></p>
+  </div>
+
+  <h2>Context</h2>
+  <p>Banks use this pipeline for IFRS 9 reporting. It estimates how likely borrowers are to default, adjusted for where the economy is heading. The slow part searches millions of combinations of economic variables (interest rates, inflation, house prices) for the best regression models.</p>
+
+  <h2>What I did</h2>
+  <ul>
+    <li>Split the old code into 20 small steps. Each one is triggered by a Kafka message and reads and writes through one data layer that works with both Oracle and PostgreSQL.</li>
+    <li>Wrote a test harness that runs the old and new code on the same data and compares every output table. All 29 test cases match to at least 7 decimal places.</li>
+    <li>Sped up the model search by computing the cheap checks (R², t-statistics) directly instead of fitting a model for every candidate. Only the top 10,000 get a full fit. A 1.65M-combination run went from 91 to 16 minutes.</li>
+    <li>Fixed the memory problem by streaming candidates in batches of 100,000 and keeping only the best 30,000 in a fixed-size heap. Peak memory on a 24M-combination run went from 8.7 GB to 0.5 GB, and the chosen models are the same.</li>
+  </ul>
+
+  <figure class="chart" data-chart="dumbbell" data-title-id="mem-title">
+    <p class="figure-title" id="mem-title">Peak memory, before and after</p>
+    <ul class="legend">
+      <li><span class="dot before"></span>Before (old code)</li>
+      <li><span class="dot after"></span>After</li>
+    </ul>
+    <div class="plot"></div>
+    <script type="application/json">
+      {"unit": "GB", "max": 10, "step": 2,
+       "names": {"before": "Before", "after": "After"},
+       "threshold": {"value": 8, "label": "≈ 8 GB available per run"},
+       "rows": [
+         {"label": "5.47M combinations", "before": 4.4, "after": 0.51},
+         {"label": "24M combinations", "before": 8.7, "after": 0.49}
+       ]}
+    </script>
+    <figcaption>The servers have 16 GB and run two workflows at once, so each run gets about 8 GB. The old code went over that on big searches.</figcaption>
+    <details class="data">
+      <summary>Show data</summary>
+      <table>
+        <thead><tr><th>Search size</th><th>Before</th><th>After</th></tr></thead>
+        <tbody>
+          <tr><td>5.47M combinations</td><td>4.4 GB</td><td>0.51 GB</td></tr>
+          <tr><td>24M combinations</td><td>8.7 GB</td><td>0.49 GB</td></tr>
+        </tbody>
+      </table>
+    </details>
+  </figure>
+
+  <p class="note">The code belongs to NTT DATA, so it isn’t public.</p>
+
+  <nav class="next" aria-label="More work">
+    <a href="../index.html#work"><span class="label">Back</span><span>All work</span></a>
+    <a href="leak-phishing-monitor.html"><span class="label">Next</span><span>Leak &amp; Phishing Early Detection →</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Nixon Castroman</span>
+    <nav aria-label="Contact">
+      <a href="mailto:nixoncastroman08@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/nixoncastroman">LinkedIn</a>
+      <a href="../resume.pdf">Résumé</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

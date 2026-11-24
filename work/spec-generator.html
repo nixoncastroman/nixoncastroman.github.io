@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spec Generator · Nixon Castroman</title>
+<meta name="description" content="Turns a short project brief into a full technical spec in the company’s Word template, using local LLMs. Built at Fata Organa.">
+<link rel="canonical" href="https://nixoncastroman.github.io/work/spec-generator.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spec Generator · Nixon Castroman">
+<meta property="og:description" content="A short project brief in, a 29-page technical spec out.">
+<meta property="og:image" content="https://nixoncastroman.github.io/assets/img/og.png">
+<meta name="theme-color" content="#ece7dc">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="home" href="../index.html">Nixon Castroman</a>
+  <nav aria-label="Site"><a href="../index.html#work">Work</a><a href="../resume.pdf">Résumé</a><a href="mailto:nixoncastroman08@gmail.com">Contact</a></nav>
+</header>
+
+<main id="main" class="sheet prose">
+  <p class="eyebrow">Case study 04 · Fata Organa</p>
+  <h1>Spec Generator</h1>
+  <p class="lede">Turns a short project brief into a full technical spec in the company’s Word template, using local LLMs.</p>
+
+  <dl class="facts">
+    <dt>Role</dt><dd>AI Engineer Intern (remote)</dd>
+    <dt>Where</dt><dd>Fata Organa</dd>
+    <dt>When</dt><dd>Jul – Sep 2025</dd>
+    <dt>Stack</dt><dd>FastAPI, LangChain, Ollama, docxtpl</dd>
+  </dl>
+
+  <div class="stats">
+    <p class="stat"><span class="stat-value">~29</span><span class="stat-label">pages per spec</span></p>
+    <p class="stat"><span class="stat-value">12</span><span class="stat-label">sections, one prompt each</span></p>
+    <p class="stat"><span class="stat-value">2</span><span class="stat-label">document types: technical and functional</span></p>
+  </div>
+
+  <h2>What I did</h2>
+  <ul>
+    <li>Built a FastAPI service that takes a brief (goal, features, tech stack) and writes the whole document.</li>
+    <li>Gave each of the 12 sections its own prompt (architecture, API, data model, tests, security and so on), then cleaned the output and filled the company’s Word template with docxtpl.</li>
+    <li>Ran it on local models through Ollama, so client requirements stay on company machines.</li>
+    <li>Tested it with other AI engineers and a few divisions to make sure the documents fit how they work.</li>
+  </ul>
+
+  <figure>
+    <div class="thumbs">
+      <img src="../assets/img/spec-p01.png" width="340" height="440" alt="Cover page: Digital Goods E-commerce Hub, Technical Specification Document">
+      <img src="../assets/img/spec-p02.png" width="340" height="440" alt="Approval page">
+      <img src="../assets/img/spec-p03.png" width="340" height="440" alt="Revision history">
+      <img src="../assets/img/spec-p04.png" width="340" height="440" alt="Table of contents">
+      <img src="../assets/img/spec-p05.png" width="340" height="440" alt="Table of contents, continued">
+      <img src="../assets/img/spec-p06.png" width="340" height="440" alt="Section 1, reference documents">
+      <img src="../assets/img/spec-p07.png" width="340" height="440" alt="Design limitations">
+      <img src="../assets/img/spec-p08.png" width="340" height="440" alt="Start of section 4, functional requirement summary">
+    </div>
+    <figcaption>The first 8 pages of a spec it generated for a sample project, “Digital Goods E-commerce Hub”.</figcaption>
+  </figure>
+
+  <nav class="next" aria-label="More work">
+    <a href="classify-detoxify.html"><span class="label">Previous</span><span>← Classify &amp; Detoxify</span></a>
+    <a href="../index.html#work"><span class="label">Back</span><span>All work</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Nixon Castroman</span>
+    <nav aria-label="Contact">
+      <a href="mailto:nixoncastroman08@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/nixoncastroman">LinkedIn</a>
+      <a href="../resume.pdf">Résumé</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
